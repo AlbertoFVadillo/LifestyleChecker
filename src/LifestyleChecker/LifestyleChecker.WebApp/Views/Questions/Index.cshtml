@@ -1,0 +1,62 @@
+﻿@model LifestyleChecker.WebApp.Models.QuestionsViewModel
+@using LifestyleChecker.Framework.Constants
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @Model.Name</h1>
+</div>
+
+@using (Html.BeginForm("Index", "Questions"))
+{
+    @Html.AntiForgeryToken()
+
+    <h3>Please select the relevant answers:</h3>
+    <div class="form-group">
+        <hr />
+        <dl class="row">
+            @Html.HiddenFor(model => model.Name, new { id = "name", Value = @Model.Name })
+            @Html.HiddenFor(model => model.Age, new { id = "age", Value = @Model.Age })
+            <dt>
+                <label class="control-label">@QuestionStrings.Q1</label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.RadioButtonFor(model => model.Answer1, "true") <label> Yes </label>
+                @Html.RadioButtonFor(model => model.Answer1, "false") <label> No </label>
+                @Html.ValidationMessageFor(model => model.Answer1)
+            </dd>
+            <dt>
+                <label class="control-label">@QuestionStrings.Q2</label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.RadioButtonFor(model => model.Answer2, "true") <label> Yes </label>
+                @Html.RadioButtonFor(model => model.Answer2, "false") <label> No </label>
+                @Html.ValidationMessageFor(model => model.Answer2)
+            </dd>
+            <dt>
+                <label class="control-label">@QuestionStrings.Q3</label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.RadioButtonFor(model => model.Answer3, "true") <label> Yes </label>
+                @Html.RadioButtonFor(model => model.Answer3, "false") <label> No </label>
+                @Html.ValidationMessageFor(model => model.Answer3)
+            </dd>
+            <dt class="col-sm-2">
+            </dt>
+            <dd class="col-sm-10">
+                <input type="submit" value="Submit Questions" class="btn btn-default" />
+            </dd>
+            <dt class="col-sm-2">
+            </dt>
+            <dd class="col-sm-10">
+            </dd>
+            <dt class="col-sm-2">
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ErrorMessage
+            </dd>
+        </dl>
+    </div>
+
+    <div class="text-center">
+        <h1 class="display-4">@Model.ResultMessage</h1>
+    </div>
+}

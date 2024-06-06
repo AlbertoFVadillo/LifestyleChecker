@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+ mssql:
+  image: mcr.microsoft.com/azure-sql-edge
+  environment:
+   ACCEPT_EULA: "Y"
+   SA_PASSWORD: "A1reL0gic!#"
+  ports:
+   - '1433:1433'
+  volumes:
+    - "mssql-azuresql-edge-data:/var/opt/mssql"
+
+volumes:
+  mssql-azuresql-edge-data:

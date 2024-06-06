@@ -1,0 +1,57 @@
+﻿@model LifestyleChecker.WebApp.Models.PatientViewModel
+
+@{
+    ViewData["Title"] = "LifeStyle Checker App";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>LifeStyle Checker App</p>
+
+    @using (Html.BeginForm("Index", "Home"))
+    {
+        @Html.AntiForgeryToken();
+
+        <h1 class="display-4">Please enter your details:</h1>
+        <div class="form-group">
+            <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                <label asp-for="NHSNumber" class="col-md-2 control-label"></label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.TextBoxFor(model => model.NHSNumber)
+                @Html.ValidationMessageFor(model => model.NHSNumber)
+            </dd>
+            <dt class="col-sm-2">
+                <label asp-for="Surname" class="col-md-2 control-label"></label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.TextBoxFor(model => model.Surname)
+                    @Html.ValidationMessageFor(model => model.Surname)
+            </dd> 
+            <dt class="col-sm-2">
+                <label asp-for="DateOfBirth" class="col-md-2 control-label"></label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.TextBoxFor(model => model.DateOfBirth, "{0:dd-MM-yyyy}", new { type = "date" })
+            </dd>
+            <dt class="col-sm-2">
+            </dt>
+            <dd class="col-sm-10">
+                    <input type="submit" value="Log In" class="btn btn-default" />
+            </dd>
+            <dt class="col-sm-2">
+            </dt>
+            <dd class="col-sm-10">
+            </dd>
+                <dt class="col-sm-2">
+                </dt>
+                <dd class="col-sm-10">
+                   @ViewBag.ErrorMessage
+                </dd>
+        </dl>
+    </div>
+    }
+</div>
+
